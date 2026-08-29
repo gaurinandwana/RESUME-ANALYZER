@@ -71,6 +71,7 @@ resume-analyzer-app/
 ├── skills.py              # Skill database, normalization & regex extraction
 ├── analyzer.py            # Transparent scoring algorithm, TF-IDF & keyword matcher
 ├── report_generator.py    # Downloadable plain text/markdown report generator
+├── vercel.json            # Vercel deployment configuration
 ├── requirements.txt       # Dependencies
 ├── README.md              # Project documentation
 └── .gitignore             # Git ignore configuration
@@ -85,8 +86,8 @@ resume-analyzer-app/
 
 ### Step 1: Clone or Download the Project
 ```bash
-git clone https://github.com/your-username/resume-analyzer-app.git
-cd resume-analyzer-app
+git clone https://github.com/gaurinandwana/RESUME-ANALYZER.git
+cd RESUME-ANALYZER
 ```
 
 ### Step 2: Create a Virtual Environment (Recommended)
@@ -107,7 +108,7 @@ pip install -r requirements.txt
 
 ---
 
-## 💻 How to Run
+## 💻 How to Run Locally
 
 Launch the Streamlit web application with:
 
@@ -116,6 +117,29 @@ streamlit run app.py
 ```
 
 The application will open automatically in your browser at `http://localhost:8501`.
+
+---
+
+## 🌐 Deployment Instructions
+
+### Deploying on Vercel
+This project includes a pre-configured `vercel.json` file for Vercel Python Serverless execution:
+
+1. Push your repository changes to GitHub.
+2. Log in to your [Vercel Dashboard](https://vercel.com/) and click **"Add New Project"**.
+3. Import your GitHub repository (`RESUME-ANALYZER`).
+4. Vercel automatically detects `vercel.json` and installs Python dependencies from `requirements.txt`.
+5. Click **"Deploy"**.
+
+---
+
+### Deploying on Streamlit Community Cloud (Recommended)
+Streamlit Cloud offers free 1-click hosting natively tailored for Streamlit apps:
+
+1. Go to [share.streamlit.io](https://share.streamlit.io/) and log in with GitHub.
+2. Click **"New App"**.
+3. Select repository: `gaurinandwana/RESUME-ANALYZER`, Branch: `main`, Main file path: `app.py`.
+4. Click **"Deploy!"**.
 
 ---
 
@@ -132,27 +156,6 @@ $$\text{Score} = (W_{\text{skills}} \times S_{\text{skills}}) + (W_{\text{keywor
 | **Experience Alignment** | **15%** | Verification of work experience section and years of experience |
 | **Education Alignment** | **15%** | Detection of degree and academic credentials |
 | **Textual Similarity** | **10%** | TF-IDF Cosine Similarity between entire resume text and JD |
-
-*Note: If a Job Description does not specify explicit skills or degree requirements, weights are dynamically redistributed to maintain fair evaluation.*
-
----
-
-## 🧪 Testing & Verification
-
-The application includes robust edge-case handling:
-- **Empty / Missing Resume**: Displays user-friendly warning prompt.
-- **Unreadable PDF**: Catches PyPDF2 read exceptions gracefully.
-- **Short Job Description**: Prompts user to input meaningful job requirements.
-- **No Paid APIs**: Functions completely offline without internet connectivity.
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] Support for DOCX resume file format.
-- [ ] Export analysis as a stylized PDF report.
-- [ ] Multiple resume comparison against a single job description.
-- [ ] Custom skill database upload via JSON config.
 
 ---
 
