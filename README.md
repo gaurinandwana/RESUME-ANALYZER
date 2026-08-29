@@ -71,7 +71,6 @@ resume-analyzer-app/
 ├── skills.py              # Skill database, normalization & regex extraction
 ├── analyzer.py            # Transparent scoring algorithm, TF-IDF & keyword matcher
 ├── report_generator.py    # Downloadable plain text/markdown report generator
-├── vercel.json            # Vercel deployment configuration
 ├── requirements.txt       # Dependencies
 ├── README.md              # Project documentation
 └── .gitignore             # Git ignore configuration
@@ -120,26 +119,31 @@ The application will open automatically in your browser at `http://localhost:850
 
 ---
 
-## 🌐 Deployment Instructions
+## 🌐 Cloud Deployment Guide
 
-### Deploying on Vercel
-This project includes a pre-configured `vercel.json` file for Vercel Python Serverless execution:
+Streamlit applications rely on WebSocket communication and long-running Python servers. Below are the recommended free cloud deployment platforms:
 
-1. Push your repository changes to GitHub.
-2. Log in to your [Vercel Dashboard](https://vercel.com/) and click **"Add New Project"**.
-3. Import your GitHub repository (`RESUME-ANALYZER`).
-4. Vercel automatically detects `vercel.json` and installs Python dependencies from `requirements.txt`.
-5. Click **"Deploy"**.
+### Option 1: Streamlit Community Cloud (Recommended - Free & 1-Click)
+Streamlit Community Cloud is the official, free hosting platform specifically designed for Streamlit apps.
+
+1. Push your repository to GitHub: `https://github.com/gaurinandwana/RESUME-ANALYZER.git`.
+2. Visit **[share.streamlit.io](https://share.streamlit.io/)** and sign in with your GitHub account.
+3. Click **"New App"**.
+4. Select your repository: `gaurinandwana/RESUME-ANALYZER`, Branch: `main`, and Main file path: `app.py`.
+5. Click **"Deploy!"**. Your app will be live with a custom URL in seconds.
 
 ---
 
-### Deploying on Streamlit Community Cloud (Recommended)
-Streamlit Cloud offers free 1-click hosting natively tailored for Streamlit apps:
+### Option 2: Render (Free Web Service Hosting)
+Render supports Python web services with custom start commands.
 
-1. Go to [share.streamlit.io](https://share.streamlit.io/) and log in with GitHub.
-2. Click **"New App"**.
-3. Select repository: `gaurinandwana/RESUME-ANALYZER`, Branch: `main`, Main file path: `app.py`.
-4. Click **"Deploy!"**.
+1. Log in to [Render.com](https://render.com/) and click **"New +" -> "Web Service"**.
+2. Connect your GitHub repository (`RESUME-ANALYZER`).
+3. Set the following configuration:
+   - **Environment**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`
+4. Click **"Create Web Service"**.
 
 ---
 
